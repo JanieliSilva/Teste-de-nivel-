@@ -1,0 +1,43 @@
+//QUEESTÃO 01
+int x, y, *p; //Declarou duas variaveis do tipo inteiro e um ponteiro
+y = 0; // y recebeu o valor 0
+p = &y; // o ponteiro recebe o endereço de y
+x = *p; // x recebe o conteudo de p
+x = 4; //x recebe um novo valor e agora é 4
+(*p)++; // o conteudo de *p incrementa mais 1, 0+1 = 1
+--x; //o valor de é decrementado 1, 4-1 = 3
+(*p) += x; // o conteudo de (*p) é somado com o valor da variavel x 1+3= 4
+// x = 3, y = 4, *p = 4
+------------------------------------------------------------------------------------------------------------------------------
+//QUESTÃO 02
+int main(void) {
+int x, *p; // declarou uma variavel do tipo inteiro e um ponteiro
+x = 100; // x recebe o valor 100
+p = x; // essa linha contém um erro, deveria ser p = &x;
+printf(“Valor de p = %p\tValor de *p = %d”, p, *p);
+}
+// a) a mensagem é de erro
+// b) Por causa do endereçamento p = x; que deveria ser p = &x para conseguir receber o endereço da variavel 
+// c) não
+// d) não, pois ainda possui um erro no endereçamento em p = x;
+// e) depois de fazer as modificaçoes, consegui uma execução bem sucedida.
+----------------------------------------------------------------------------------------------------------------------------------
+//QUESTÃO 03
+#include <stdio.h>
+int main(void) {
+ int a, b, c, d; // declarou variaveis do tipo inteiro
+ int *p1; //declarou um ponteiro do tipo inteiro
+ int *p2 = &a; //declarou um ponteiro do tipo inteiro e esse ponteiro recebe o endereço da variavel a
+ int *p3 = &c; //declarou um ponteiro do tipo inteiro e esse ponteiro recebe o endereço da variavel c
+ p1 = p2; //o ponteiro p1 recebe o ponteiro p2
+ *p2 = 10; //o ponteiro p2 recebe o valor 10 como conteudo
+ b = 20; // variavel b recebe 20
+ int **pp; //declarou um ponteiro para ponteiro
+ pp = &p1; //o ponteiro para ponteiro recebe o endereço de p1
+ *p3 = **pp; //p3 recebe o conteudo de poonteiro para ponteiro
+ int *p4 = &d; //p4 recebe o endereço de d
+ *p4 = b + (*p1)++; //p4 vai ser igual b mais o conteudo de p1 20+10 = 30, e incrementa mais 1 em p1 10+1 = 1
+ printf("%d\t%d\t%d\t%d\n", a, b, c, d); //imprime os valores
+ return 0;
+}
+// a) 11, b) 20, c) 10, d) 30
